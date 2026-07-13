@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const canvas     = document.getElementById('confetti');
   const ctx        = canvas.getContext('2d');
 
+  const flyingUnicorn = document.getElementById('flyingUnicorn');
+  const btnDetails    = document.getElementById('btnDetails');
+  const formModal     = document.getElementById('formModal');
+  const meriendaForm   = document.getElementById('merienda-form');
+  const btnEnviar      = document.getElementById('btnEnviar');
+  const formStatus     = document.getElementById('formStatus');
+  const sentScreen     = document.getElementById('sentScreen');
+
+  const EMAIL_DESTINO = 'micabelenmartin@gmail.com';
+
   let dodgeCount = 0;
   let yesScale   = 1;
 
@@ -122,14 +132,34 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ============ 3. EL BOTÓN "SÍ" ============ */
   btnYes.addEventListener('click', () => {
     card.classList.remove('is-visible');
+
+    setTimeout(() => {
+      // el unicornio cruza la pantalla volando
+      flyingUnicorn.classList.remove('is-flying');
+      void flyingUnicorn.offsetWidth; // fuerza el reinicio de la animación
+      flyingUnicorn.classList.add('is-flying');
+    }, 350);
+
     setTimeout(() => {
       success.classList.add('is-visible');
       lanzarConfetti();
-    }, 400);
+    }, 350 + 1500); // recién después de que termina el vuelo
   });
 
-  btnAgain.addEventListener('click', () => {
+  // botón de la pantalla de éxito: abre el formulario de horario y antojos
+  btnDetails.addEventListener('click', () => {
     success.classList.remove('is-visible');
+    setTimeout(() => {
+      formModal.classList.add('is-visible');
+    }, 300);
+  });
+
+  btnAgain.addEventListener('click', reiniciarTodo);
+
+  function reiniciarTodo(){
+    sentScreen.classList.remove('is-visible');
+    success.classList.remove('is-visible');
+    formModal.classList.remove('is-visible');
     envelope.classList.remove('is-open');
     stage.classList.remove('is-hidden');
     card.classList.remove('is-fleeing');
@@ -141,7 +171,63 @@ document.addEventListener('DOMContentLoaded', () => {
     btnNo.style.left = '';
     btnNo.style.top = '';
     counterEl.textContent = '';
+    meriendaForm.reset();
+    document.querySelectorAll('.chip input:checked').forEach(c => c.checked = false);
+    formStatus.textContent = '';
+    btnEnviar.disabled = false;
+    btnEnviar.textContent = 'Enviar propuesta 💌';
     resizeCanvas();
+  }
+
+  /* ============ 4. ENVIAR EL FORMULARIO POR MAIL ============ */
+  meriendaForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const horario = document.getElementById('horario').value;
+    const otro    = document.getElementById('otro_antojo').value.trim();
+    const antojosSeleccionados = Array.from(
+      document.querySelectorAll('#antojos input[name="antojos"]:checked')
+    ).map(el => el.value);
+
+    if (!horario) {
+      formStatus.textContent = 'Elegí un horario primero 🕓💜';
+      return;
+    }
+
+    let listaAntojos = antojosSeleccionados.join(', ');
+    if (otro) listaAntojos = listaAntojos ? `${listaAntojos}, ${otro}` : otro;
+    if (!listaAntojos) listaAntojos = 'sorprendeme vos 😋';
+
+    btnEnviar.disabled = true;
+    btnEnviar.textContent = 'Enviando... 💌';
+    formStatus.textContent = '';
+
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: '🧁 ¡Propuesta de merienda!',
+          Horario: horario,
+          Antojos: listaAntojos
+        })
+      });
+
+      if (!res.ok) throw new Error('fallo el envío');
+
+      formModal.classList.remove('is-visible');
+      setTimeout(() => {
+        sentScreen.classList.add('is-visible');
+      }, 300);
+
+    } catch (err) {
+      formStatus.textContent = 'Uy, no se pudo enviar. ¿Intentamos de nuevo? 💔';
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = 'Enviar propuesta 💌';
+    }
   });
 
   /* ============ 4. CONFETTI DE CORAZONES ============ */
