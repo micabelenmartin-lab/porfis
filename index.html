@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Merendamos? 🦄💕</title>
+<title>¿Cenamos? 🦄💕</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
@@ -37,8 +37,8 @@
         <span class="sparkle sparkle--3">⭐</span>
       </div>
 
-      <h1 class="card__title">¿Merendamos<br>juntos? <span class="cupcake">🧁</span></h1>
-      <p class="card__subtitle">tecito, mates y algo dulce, a la hora que vos digas 🍩💗</p>
+      <h1 class="card__title">¿Cenamos<br>juntos? <span class="cupcake">🍽️</span></h1>
+      <p class="card__subtitle">velitas, vino y algo rico, el 15/07 a la hora que vos digas 🍷🕯️</p>
 
       <div class="buttons" id="buttons">
         <button class="btn btn--yes" id="btnYes">¡Sí, obvio! 💕</button>
@@ -56,9 +56,9 @@
   <section class="success" id="success">
     <div class="success__inner">
       <span class="success__unicorn">🦄🌈🦄</span>
-      <h2>¡Yeiii! Nos vemos para merendar 🧁☕💖</h2>
-      <p>Guardá lugar en tu pancita, que la merienda ya tiene fecha con vos 🥐✨</p>
-      <button class="btn btn--again" id="btnDetails">Contale la hora y el antojo 💌</button>
+      <h2>¡Yeiii! Nos vemos a cenar 🍝🍷💖</h2>
+      <p>Guardá lugar en tu agenda, que la cena ya tiene fecha con vos: 15/07 ✨</p>
+      <button class="btn btn--again" id="btnDetails">Contale la hora y el plato 💌</button>
     </div>
   </section>
 
@@ -66,30 +66,35 @@
   <section class="formModal" id="formModal">
     <div class="formModal__inner">
       <span class="formModal__unicorn">🦄</span>
-      <h2>Contame los detalles 🍩</h2>
+      <h2>Contame los detalles 🍽️</h2>
       <p class="formModal__subtitle">así te espero con todo listo</p>
 
       <form id="merienda-form">
+        <div class="date-badge">
+          <span class="date-badge__icon">📅</span>
+          <span class="date-badge__text">15 - 07</span>
+        </div>
+
         <label class="field">
           <span class="field__label">¿A qué hora te gustaría? 🕓</span>
           <input type="time" name="horario" id="horario" required>
         </label>
 
         <fieldset class="field">
-          <legend class="field__label">¿Con qué antojo? 🍰</legend>
+          <legend class="field__label">¿Con qué antojo? 🍽️</legend>
           <div class="chips" id="antojos">
-            <label class="chip"><input type="checkbox" name="antojos" value="Medialunas 🥐"><span>Medialunas 🥐</span></label>
-            <label class="chip"><input type="checkbox" name="antojos" value="Torta 🍰"><span>Torta 🍰</span></label>
-            <label class="chip"><input type="checkbox" name="antojos" value="Alfajores 🍪"><span>Alfajores 🍪</span></label>
-            <label class="chip"><input type="checkbox" name="antojos" value="Facturas 🥯"><span>Facturas 🥯</span></label>
-            <label class="chip"><input type="checkbox" name="antojos" value="Frutas 🍓"><span>Frutas 🍓</span></label>
-            <label class="chip"><input type="checkbox" name="antojos" value="Sándwiches 🥪"><span>Sándwiches 🥪</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Pastas 🍝"><span>Pastas 🍝</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Sushi 🍣"><span>Sushi 🍣</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Asado 🥩"><span>Asado 🥩</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Pizza 🍕"><span>Pizza 🍕</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Ensaladas 🥗"><span>Ensaladas 🥗</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Tacos 🌮"><span>Tacos 🌮</span></label>
           </div>
         </fieldset>
 
         <label class="field">
           <span class="field__label">¿Algo más que te tinque? (opcional) ✍️</span>
-          <input type="text" name="otro_antojo" id="otro_antojo" placeholder="ej: mate, café con leche, helado...">
+          <input type="text" name="otro_antojo" id="otro_antojo" placeholder="ej: vino, postre, algo picante...">
         </label>
 
         <button type="submit" class="btn btn--yes" id="btnEnviar">Enviar propuesta 💌</button>
@@ -103,7 +108,7 @@
     <div class="sent__inner">
       <span class="sent__unicorn">💌🦄💖</span>
       <h2>¡Listo, ya te está esperando en tu mail!</h2>
-      <p>En breve te confirmo la hora y llevo el antojo que pediste 🧁✨</p>
+      <p>En breve te confirmo la hora y llevo el plato que pediste para el 15/07 🍽️✨</p>
       <button class="btn btn--again" id="btnAgain">volver a empezar</button>
     </div>
   </section>
