@@ -49,12 +49,61 @@
     </div>
   </section>
 
+  <!-- ================= UNICORNIO VOLANDO (transición) ================= -->
+  <div class="flying-unicorn" id="flyingUnicorn" aria-hidden="true">🦄</div>
+
   <!-- ================= PANTALLA FINAL DE ÉXITO ================= -->
   <section class="success" id="success">
     <div class="success__inner">
       <span class="success__unicorn">🦄🌈🦄</span>
       <h2>¡Yeiii! Nos vemos para merendar 🧁☕💖</h2>
       <p>Guardá lugar en tu pancita, que la merienda ya tiene fecha con vos 🥐✨</p>
+      <button class="btn btn--again" id="btnDetails">Contale la hora y el antojo 💌</button>
+    </div>
+  </section>
+
+  <!-- ================= FORMULARIO: HORARIO Y ANTOJOS ================= -->
+  <section class="formModal" id="formModal">
+    <div class="formModal__inner">
+      <span class="formModal__unicorn">🦄</span>
+      <h2>Contame los detalles 🍩</h2>
+      <p class="formModal__subtitle">así te espero con todo listo</p>
+
+      <form id="merienda-form">
+        <label class="field">
+          <span class="field__label">¿A qué hora te gustaría? 🕓</span>
+          <input type="time" name="horario" id="horario" required>
+        </label>
+
+        <fieldset class="field">
+          <legend class="field__label">¿Con qué antojo? 🍰</legend>
+          <div class="chips" id="antojos">
+            <label class="chip"><input type="checkbox" name="antojos" value="Medialunas 🥐"><span>Medialunas 🥐</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Torta 🍰"><span>Torta 🍰</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Alfajores 🍪"><span>Alfajores 🍪</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Facturas 🥯"><span>Facturas 🥯</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Frutas 🍓"><span>Frutas 🍓</span></label>
+            <label class="chip"><input type="checkbox" name="antojos" value="Sándwiches 🥪"><span>Sándwiches 🥪</span></label>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span class="field__label">¿Algo más que te tinque? (opcional) ✍️</span>
+          <input type="text" name="otro_antojo" id="otro_antojo" placeholder="ej: mate, café con leche, helado...">
+        </label>
+
+        <button type="submit" class="btn btn--yes" id="btnEnviar">Enviar propuesta 💌</button>
+        <p class="formModal__status" id="formStatus"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= CONFIRMACIÓN DE ENVÍO ================= -->
+  <section class="sent" id="sentScreen">
+    <div class="sent__inner">
+      <span class="sent__unicorn">💌🦄💖</span>
+      <h2>¡Listo, ya te está esperando en tu mail!</h2>
+      <p>En breve te confirmo la hora y llevo el antojo que pediste 🧁✨</p>
       <button class="btn btn--again" id="btnAgain">volver a empezar</button>
     </div>
   </section>
