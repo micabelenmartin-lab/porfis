@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Merendamos? 🦄💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- fondo con estrellitas y corazones flotando -->
+  <div class="sky" id="sky"></div>
+
+  <!-- ================= SOBRE ================= -->
+  <main class="stage" id="stage">
+    <button class="envelope" id="envelope" aria-label="Abrir sobre">
+      <span class="envelope__shadow"></span>
+      <span class="envelope__body">
+        <span class="envelope__flap"></span>
+        <span class="envelope__seal">💌</span>
+        <span class="envelope__letter"></span>
+      </span>
+    </button>
+    <p class="hint" id="hint">tocá el sobre ✨</p>
+  </main>
+
+  <!-- ================= TARJETA (oculta al inicio) ================= -->
+  <section class="card" id="card">
+    <div class="card__inner">
+      <div class="unicorn" aria-hidden="true">
+        <span class="unicorn__emoji">🦄</span>
+        <span class="sparkle sparkle--1">✨</span>
+        <span class="sparkle sparkle--2">💫</span>
+        <span class="sparkle sparkle--3">⭐</span>
+      </div>
+
+      <h1 class="card__title">¿Merendamos<br>juntos? <span class="cupcake">🧁</span></h1>
+      <p class="card__subtitle">tecito, mates y algo dulce, a la hora que vos digas 🍩💗</p>
+
+      <div class="buttons" id="buttons">
+        <button class="btn btn--yes" id="btnYes">¡Sí, obvio! 💕</button>
+        <button class="btn btn--no" id="btnNo">No puedo 😢</button>
+      </div>
+
+      <p class="counter" id="counter"></p>
+    </div>
+  </section>
+
+  <!-- ================= PANTALLA FINAL DE ÉXITO ================= -->
+  <section class="success" id="success">
+    <div class="success__inner">
+      <span class="success__unicorn">🦄🌈🦄</span>
+      <h2>¡Yeiii! Nos vemos para merendar 🧁☕💖</h2>
+      <p>Guardá lugar en tu pancita, que la merienda ya tiene fecha con vos 🥐✨</p>
+      <button class="btn btn--again" id="btnAgain">volver a empezar</button>
+    </div>
+  </section>
+
+  <canvas id="confetti"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
