@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'jaja, ¡ni ahí! 🏃‍♀️',
     'no me vas a agarrar 😜',
     '¿en serio? ¡nop! 🦄💨',
-    'el "no" se fue a merendar solo 🧁',
+    'el "no" se fue a cenar solo 🍝',
     'más lejos, más dulce el "sí" 💕',
     'seguime si podés 😏'
   ];
@@ -210,7 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          _subject: '🧁 ¡Propuesta de merienda!',
+          _subject: '🍽️ ¡Propuesta de cena!',
+          Fecha: '15 - 07',
           Horario: horario,
           Antojos: listaAntojos
         })
